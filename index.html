@@ -75,6 +75,23 @@ main{flex:1;max-width:900px;margin:0 auto;width:100%;padding:40px 20px}
 .sample-label{font-size:11px;font-weight:700;color:var(--muted);letter-spacing:.8px;text-transform:uppercase;margin-bottom:10px}
 .sample-img-wrap{border:1px solid var(--border);border-radius:8px;overflow:hidden;background:var(--bg)}
 .sample-img-wrap img{width:100%;display:block}
+
+.hiw-section{max-width:900px;margin:0 auto;padding:0 20px 60px}
+.hiw-title{font-size:26px;font-weight:800;color:var(--text);margin-bottom:8px}
+.hiw-sub{font-size:15px;color:var(--muted);margin-bottom:36px;line-height:1.6}
+.hiw-steps{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.hiw-step{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow)}
+.hiw-step-img{background:var(--primary-light);display:flex;align-items:center;justify-content:center;padding:32px;position:relative}
+.hiw-step-img svg{opacity:.9}
+.hiw-step-num{position:absolute;top:12px;left:12px;width:28px;height:28px;background:var(--primary);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700}
+.hiw-step-body{padding:18px 20px}
+.hiw-step-body h3{font-size:15px;font-weight:700;margin-bottom:6px;color:var(--text)}
+.hiw-step-body p{font-size:13px;color:var(--muted);line-height:1.6}
+.hiw-tip{display:flex;align-items:flex-start;gap:10px;background:#fffbea;border:1px solid #f5e48a;border-radius:10px;padding:14px 18px;margin-top:28px;font-size:13px;color:#7a6400;line-height:1.6}
+.hiw-tip svg{flex-shrink:0;margin-top:2px;color:#c9a400}
+.nav-hiw{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:600;color:var(--primary);text-decoration:none}
+.nav-hiw:hover{text-decoration:underline}
+@media(max-width:600px){.hiw-steps{grid-template-columns:1fr}}
 footer{text-align:center;padding:20px;font-size:12px;color:var(--muted);border-top:1px solid var(--border)}
 @media(max-width:600px){.hero h1{font-size:22px}.cards-row{grid-template-columns:1fr}.card{padding:20px}#drop-zone{padding:32px 16px}}
 </style>
@@ -117,8 +134,22 @@ footer{text-align:center;padding:20px;font-size:12px;color:var(--muted);border-t
       <div class="spec-chip"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>300 DPI &middot; 1016 &times; 638 px</div>
       <div class="spec-chip"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>100% Browser &mdash; কোনো upload নেই</div>
       <div class="spec-chip"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Front + Back side by side</div>
-    </div>
 
+    <div class="border-panel">
+      <label><input type="checkbox" id="border-toggle"> Card Border যোগ করুন</label>
+      <div class="bp-divider"></div>
+      <div id="border-options">
+        <div class="bp-field">
+          <span>Thickness:</span>
+          <input type="number" id="border-size" value="2" min="1" max="20" step="0.5">
+          <span>mm</span>
+        </div>
+        <div class="bp-field">
+          <span>Color:</span>
+          <input type="color" id="border-color" value="#000000">
+        </div>
+      </div>
+    </div>
 
     <div id="error-box"></div>
     <div id="processing">
@@ -182,25 +213,130 @@ footer{text-align:center;padding:20px;font-size:12px;color:var(--muted);border-t
 
     
 
-    <div class="border-panel" style="margin-top:20px;">
-      <label><input type="checkbox" id="border-toggle"> Card Border যোগ করুন</label>
-      <div class="bp-divider"></div>
-      <div id="border-options">
-        <div class="bp-field">
-          <span>Thickness:</span>
-          <input type="number" id="border-size" value="2" min="1" max="20" step="0.5">
-          <span>mm</span>
-        </div>
-        <div class="bp-field">
-          <span>Color:</span>
-          <input type="color" id="border-color" value="#000000">
-        </div>
-      </div>
     </div>
   </div>
 </main>
 
-<footer>ABHA Card PVC Cutter &nbsp;&middot;&nbsp; সম্পূর্ণ browser-side &mdash; কোনো data server-এ যায় না</footer>
+
+<section id="how-it-works" class="hiw-section">
+  <div style="border-top:1px solid var(--border);margin-bottom:40px;"></div>
+  <div class="badge" style="margin-bottom:14px;">গাইড</div>
+  <h2 class="hiw-title">How It Works — ধাপে ধাপে ব্যবহার</h2>
+  <p class="hiw-sub">মাত্র কয়েক সেকেন্ডে আপনার ABHA Card PDF থেকে PVC-print-ready ইমেজ তৈরি করুন।</p>
+
+  <div class="hiw-steps">
+
+    <!-- Step 1 -->
+    <div class="hiw-step">
+      <div class="hiw-step-img" style="background:#e8f2fc;">
+        <div class="hiw-step-num">1</div>
+        <svg width="160" height="100" viewBox="0 0 160 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="20" y="10" width="120" height="80" rx="8" fill="#fff" stroke="#0d6ebd" stroke-width="1.5"/>
+          <path d="M60 55 L80 35 L100 55" stroke="#0d6ebd" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <line x1="80" y1="35" x2="80" y2="70" stroke="#0d6ebd" stroke-width="2.5" stroke-linecap="round"/>
+          <rect x="55" y="70" width="50" height="10" rx="5" fill="#0d6ebd"/>
+          <text x="80" y="78.5" text-anchor="middle" fill="#fff" font-size="7" font-family="sans-serif" font-weight="700">PDF বেছে নিন</text>
+          <text x="80" y="22" text-anchor="middle" fill="#6b7a99" font-size="7" font-family="sans-serif">ABHA_Card.pdf</text>
+        </svg>
+      </div>
+      <div class="hiw-step-body">
+        <h3>ABHA PDF আপলোড করুন</h3>
+        <p>ABHA.abdm.gov.in থেকে ডাউনলোড করা PDF ফাইলটি drag &amp; drop করুন অথবা "PDF File বেছে নিন" বোতামে ক্লিক করুন। ফাইল সাইজ সর্বোচ্চ 20 MB হতে পারবে।</p>
+      </div>
+    </div>
+
+    <!-- Step 2 -->
+    <div class="hiw-step">
+      <div class="hiw-step-img" style="background:#e6f9f3;">
+        <div class="hiw-step-num" style="background:#17a97a;">2</div>
+        <svg width="160" height="100" viewBox="0 0 160 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- PDF portrait -->
+          <rect x="15" y="10" width="50" height="70" rx="4" fill="#fff" stroke="#dde3ec" stroke-width="1.5"/>
+          <rect x="20" y="18" width="40" height="24" rx="2" fill="#e8f2fc"/>
+          <rect x="20" y="46" width="40" height="24" rx="2" fill="#e6f9f3"/>
+          <text x="40" y="32" text-anchor="middle" fill="#0d6ebd" font-size="6" font-family="sans-serif">Front</text>
+          <text x="40" y="60" text-anchor="middle" fill="#17a97a" font-size="6" font-family="sans-serif">Back</text>
+          <!-- arrow -->
+          <path d="M72 50 L88 50" stroke="#6b7a99" stroke-width="1.5" stroke-linecap="round"/>
+          <polyline points="85,46 90,50 85,54" stroke="#6b7a99" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <!-- two cards side by side -->
+          <rect x="95" y="28" width="26" height="38" rx="3" fill="#e8f2fc" stroke="#0d6ebd" stroke-width="1"/>
+          <rect x="124" y="28" width="26" height="38" rx="3" fill="#e6f9f3" stroke="#17a97a" stroke-width="1"/>
+          <text x="108" y="50" text-anchor="middle" fill="#0d6ebd" font-size="5.5" font-family="sans-serif">Front</text>
+          <text x="137" y="50" text-anchor="middle" fill="#17a97a" font-size="5.5" font-family="sans-serif">Back</text>
+        </svg>
+      </div>
+      <div class="hiw-step-body">
+        <h3>Auto Crop &amp; Resize হবে</h3>
+        <p>Tool টি PDF-এর portrait page থেকে স্বয়ংক্রিয়ভাবে উপরের অর্ধেক (Front) এবং নিচের অর্ধেক (Back) আলাদা করবে। তারপর প্রতিটি কার্ড 300 DPI-তে 1011×638 px-এ resize করবে।</p>
+      </div>
+    </div>
+
+    <!-- Step 3 -->
+    <div class="hiw-step">
+      <div class="hiw-step-img" style="background:#fff4e6;">
+        <div class="hiw-step-num" style="background:#f5a623;">3</div>
+        <svg width="160" height="100" viewBox="0 0 160 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- card with border -->
+          <rect x="20" y="20" width="120" height="60" rx="6" fill="#fff" stroke="#dde3ec" stroke-width="1.5"/>
+          <rect x="25" y="25" width="110" height="50" rx="4" fill="none" stroke="#f5a623" stroke-width="3"/>
+          <text x="80" y="50" text-anchor="middle" fill="#6b7a99" font-size="8" font-family="sans-serif">Card Border</text>
+          <text x="80" y="62" text-anchor="middle" fill="#c97d00" font-size="7" font-family="sans-serif">Thickness · Color</text>
+          <!-- color swatches -->
+          <circle cx="55" cy="78" r="5" fill="#000000"/>
+          <circle cx="70" cy="78" r="5" fill="#0d6ebd"/>
+          <circle cx="85" cy="78" r="5" fill="#17a97a"/>
+          <circle cx="100" cy="78" r="5" fill="#d93025"/>
+        </svg>
+      </div>
+      <div class="hiw-step-body">
+        <h3>(Optional) Card Border যোগ করুন</h3>
+        <p>Result দেখার পর "Card Border যোগ করুন" checkbox চেক করুন। Thickness (mm) এবং Color বদলালেই সাথে সাথে Preview আপডেট হবে। Re-upload করতে হবে না।</p>
+      </div>
+    </div>
+
+    <!-- Step 4 -->
+    <div class="hiw-step">
+      <div class="hiw-step-img" style="background:#f0e8ff;">
+        <div class="hiw-step-num" style="background:#7c3aed;">4</div>
+        <svg width="160" height="100" viewBox="0 0 160 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- download icon -->
+          <rect x="35" y="15" width="90" height="55" rx="6" fill="#fff" stroke="#dde3ec" stroke-width="1.5"/>
+          <path d="M80 30 L80 52" stroke="#7c3aed" stroke-width="2.5" stroke-linecap="round"/>
+          <polyline points="68,42 80,54 92,42" stroke="#7c3aed" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <line x1="50" y1="60" x2="110" y2="60" stroke="#dde3ec" stroke-width="1.5"/>
+          <!-- 3 download buttons -->
+          <rect x="20" y="76" width="35" height="14" rx="4" fill="#17a97a"/>
+          <text x="37" y="86" text-anchor="middle" fill="#fff" font-size="6" font-family="sans-serif">Combined</text>
+          <rect x="62" y="76" width="17" height="14" rx="4" fill="#0d6ebd" opacity=".7"/>
+          <text x="70" y="86" text-anchor="middle" fill="#fff" font-size="6" font-family="sans-serif">Front</text>
+          <rect x="84" y="76" width="17" height="14" rx="4" fill="#0d6ebd" opacity=".7"/>
+          <text x="92" y="86" text-anchor="middle" fill="#fff" font-size="6" font-family="sans-serif">Back</text>
+          <rect x="106" y="76" width="35" height="14" rx="4" fill="#6b7a99" opacity=".5"/>
+          <text x="123" y="86" text-anchor="middle" fill="#fff" font-size="6" font-family="sans-serif">নতুন PDF</text>
+        </svg>
+      </div>
+      <div class="hiw-step-body">
+        <h3>Download করুন &amp; Print করুন</h3>
+        <p>তিনটি বিকল্প: <strong>Combined Image</strong> (Front+Back পাশাপাশি), <strong>Front শুধু</strong>, বা <strong>Back শুধু</strong> — PNG ফরম্যাটে। যেকোনো PVC card printer-এ সরাসরি print দিন।</p>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="hiw-tip">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+    <div><strong>Privacy Note:</strong> এই tool সম্পূর্ণ browser-এই কাজ করে। আপনার PDF বা personal data কোনো server-এ upload হয় না। সব processing আপনার device-এই হয়।</div>
+  </div>
+</section>
+
+<footer style="display:flex;align-items:center;justify-content:space-between;padding:18px 24px;font-size:12px;color:var(--muted);border-top:1px solid var(--border);flex-wrap:wrap;gap:10px;">
+  <span>ABHA Card PVC Cutter &nbsp;&middot;&nbsp; সম্পূর্ণ browser-side &mdash; কোনো data server-এ যায় না</span>
+  <a href="#how-it-works" class="nav-hiw">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+    How It Works
+  </a>
+</footer>
 
 <script>
 pdfjsLib.GlobalWorkerOptions.workerSrc =
