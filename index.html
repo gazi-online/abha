@@ -135,22 +135,6 @@ footer{text-align:center;padding:20px;font-size:12px;color:var(--muted);border-t
       <div class="spec-chip"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>100% Browser &mdash; কোনো upload নেই</div>
       <div class="spec-chip"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Front + Back side by side</div>
 
-    <div class="border-panel">
-      <label><input type="checkbox" id="border-toggle"> Card Border যোগ করুন</label>
-      <div class="bp-divider"></div>
-      <div id="border-options">
-        <div class="bp-field">
-          <span>Thickness:</span>
-          <input type="number" id="border-size" value="2" min="1" max="20" step="0.5">
-          <span>mm</span>
-        </div>
-        <div class="bp-field">
-          <span>Color:</span>
-          <input type="color" id="border-color" value="#000000">
-        </div>
-      </div>
-    </div>
-
     <div id="error-box"></div>
     <div id="processing">
       <div class="spinner"></div>
@@ -213,6 +197,22 @@ footer{text-align:center;padding:20px;font-size:12px;color:var(--muted);border-t
 
     
 
+    </div>
+
+    <div class="border-panel" style="margin-top:4px;margin-bottom:0;">
+      <label><input type="checkbox" id="border-toggle"> Card Border যোগ করুন</label>
+      <div class="bp-divider"></div>
+      <div id="border-options">
+        <div class="bp-field">
+          <span>Thickness:</span>
+          <input type="number" id="border-size" value="2" min="1" max="20" step="0.5">
+          <span>mm</span>
+        </div>
+        <div class="bp-field">
+          <span>Color:</span>
+          <input type="color" id="border-color" value="#000000">
+        </div>
+      </div>
     </div>
   </div>
 </main>
@@ -423,7 +423,7 @@ async function handleFile(file) {
 
     await compositeAndUpdate();
 
-    uploadCard.style.display = 'none';
+    document.querySelector('.sample-section').style.display = 'none';
     resultDiv.style.display  = 'block';
     resultDiv.scrollIntoView({ behavior: 'smooth', block: 'start' });
   } catch (err) {
@@ -521,7 +521,8 @@ function toURL(canvas) {
 function reset() {
   prevURLs.forEach(u => URL.revokeObjectURL(u)); prevURLs = [];
   rawFront = null; rawBack = null;
-  resultDiv.style.display = 'none'; uploadCard.style.display = '';
+  resultDiv.style.display = 'none';
+  document.querySelector('.sample-section').style.display = '';
   fileInput.value = ''; hideError();
 }
 
